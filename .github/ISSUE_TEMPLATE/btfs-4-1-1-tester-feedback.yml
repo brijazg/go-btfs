@@ -1,0 +1,81 @@
+name: BTFS 4.1.1 tester feedback
+description: Report a reproducible test result for the 4.1.1 maintenance review.
+title: "[BTFS 4.1.1 test]: "
+labels: ["testing", "maintenance-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please use a disposable test environment. Never include seed phrases, private keys, keystore files, tokens, credentials, personal data, or unredacted configuration.
+  - type: input
+    id: commit
+    attributes:
+      label: Tested commit
+      description: Git commit SHA and branch.
+      placeholder: "commit SHA / maintenance/btfs-4.1.1-rc1"
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS/version, CPU architecture, Go version, and available RAM.
+      placeholder: "Ubuntu 24.04, amd64, Go 1.23.x, 8 GB RAM"
+    validations:
+      required: true
+  - type: dropdown
+    id: test_type
+    attributes:
+      label: Test type
+      options:
+        - Fresh install
+        - Upgrade from BTFS 4.1.0
+        - Build from source
+        - Unit/integration tests
+        - Daemon stability
+        - Upload/download and data integrity
+        - API/gateway
+        - Security review
+        - Performance
+        - Documentation review
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: Result
+      options:
+        - Passed
+        - Failed
+        - Partially passed
+        - Blocked by environment
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps and commands
+      description: Exact steps needed to reproduce the result.
+      placeholder: "1. ...\n2. ..."
+    validations:
+      required: true
+  - type: textarea
+    id: expected_actual
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs
+      description: Remove secrets, tokens, IP addresses, personal paths, and private data.
+    validations:
+      required: false
+  - type: textarea
+    id: suggestions
+    attributes:
+      label: What should be improved?
+      description: Include reliability, security, performance, compatibility, or documentation suggestions.
+    validations:
+      required: false
